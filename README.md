@@ -7,6 +7,8 @@ Angular Storage Module - provides `$sessionStorage` and `$localStorage` factorie
 
 Each `$sessionStorage` and `$localStorage` implements save interface. Content of storage is serialized via JSON.stringify when content saving item and parsed via JSON.parse when item is pulled from storage.
 
+Include Module: `tseed.storage`
+
 Methods:
 
 * `.put('index', 'value')` - saves item to storage.
