@@ -1,0 +1,24 @@
+{
+  "name": "angular-storage",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Tomas-Sereikis/Angular-Storage",
+  "authors": [
+    "Tomas-Sereikis <tomas.sereikis@gmail.com>"
+  ],
+  "description": "Local and Session storage module factories for angular",
+  "main": "src/storage.js",
+  "keywords": [
+    "angular",
+    "storage",
+    "localstorage",
+    "sessionstorage"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
