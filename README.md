@@ -14,6 +14,7 @@ Methods:
 * `.put('index', 'value')` - saves item to storage.
 * `.get('index')` - gets item from storage.
 * `.has('index')` - checks if item exists in storage.
+* `.remove('index')` - removes item from storage.
 
 Example:
 

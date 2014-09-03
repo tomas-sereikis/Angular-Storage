@@ -68,6 +68,13 @@
          */
         has: function(index) {
             return this.getCacheAdapter().hasOwnProperty(index);
+        },
+
+        /**
+         * @param index
+         */
+        remove: function(index) {
+            this.getCacheAdapter().removeItem(index);
         }
     };
 
