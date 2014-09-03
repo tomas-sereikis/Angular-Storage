@@ -1,11 +1,10 @@
 {
-	"name": "AngularStorage",
-	"version": "0.0.1",
-	"dependencies": {
+    "name": "AngularStorage",
+    "version": "0.0.1",
+    "dependencies": {
 
     },
-	"devDependencies": {
-        "grunt-contrib-less": "0.11.x",
+    "devDependencies": {
         "grunt-contrib-uglify": "0.5.x"
-	}
+    }
 }
