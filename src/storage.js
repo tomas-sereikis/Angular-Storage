@@ -18,14 +18,14 @@
     /**
      * @constructor
      */
-    var CacheStorage = function() { };
-    CacheStorage.prototype = {
+    var StorageAbstract = function() { };
+    StorageAbstract.prototype = {
         /**
-         * returns cache adapter
+         * returns storage implementation
          * @return {Object}
          */
-        getCacheAdapter: function() {
-            throw new Error('Cache adapter is not implemented!');
+        getImplementation: function() {
+            throw new Error('getImplementation method is required!');
         },
 
         /**
@@ -42,7 +42,7 @@
             var stringify = JSON.stringify(value);
 
             try {
-                this.getCacheAdapter().setItem(index, stringify);
+                this.getImplementation().setItem(index, stringify);
                 return true;
             } catch (e) {
                 // log error
@@ -59,7 +59,7 @@
         get: function(index) {
             if (this.has(index)) {
                 try {
-                    return JSON.parse(this.getCacheAdapter().getItem(index));
+                    return JSON.parse(this.getImplementation().getItem(index));
                 } catch (e) {
                     // log error
                     console.error(e);
@@ -73,7 +73,7 @@
          * @returns {boolean}
          */
         has: function(index) {
-            return this.getCacheAdapter().hasOwnProperty(index);
+            return this.getImplementation().hasOwnProperty(index);
         },
 
         /**
@@ -81,14 +81,14 @@
          * @param index
          */
         remove: function(index) {
-            this.getCacheAdapter().removeItem(index);
+            this.getImplementation().removeItem(index);
         },
 
         /**
          * clear all items from storage
          */
         clear:  function() {
-            this.getCacheAdapter().clear();
+            this.getImplementation().clear();
         },
 
         /**
@@ -97,8 +97,8 @@
          */
         keys: function() {
             var keys = [ ];
-            for (var i = 0; i < this.getCacheAdapter().length; i++) {
-                keys.push(this.getCacheAdapter().key(i));
+            for (var i = 0; i < this.getImplementation().length; i++) {
+                keys.push(this.getImplementation().key(i));
             }
 
             return keys;
@@ -110,13 +110,8 @@
         .factory('$sessionStorage', ['$window', factory(function ($window) {
             /** @name $sessionStorage */
             var $sessionStorage = function() { };
-            $sessionStorage.prototype = new CacheStorage();
-
-            /**
-             * cache adapter as session storage
-             * @returns {*}
-             */
-            $sessionStorage.prototype.getCacheAdapter = function() {
+            $sessionStorage.prototype = new StorageAbstract();
+            $sessionStorage.prototype.getImplementation = function() {
                 return $window.sessionStorage;
             };
 
@@ -125,13 +120,8 @@
         .factory('$localStorage', ['$window', factory(function ($window) {
             /** @name $localStorage */
             var $localStorage = function() { };
-            $localStorage.prototype = new CacheStorage();
-
-            /**
-             * cache adapter as local storage
-             * @returns {*}
-             */
-            $localStorage.prototype.getCacheAdapter = function() {
+            $localStorage.prototype = new StorageAbstract();
+            $localStorage.prototype.getImplementation = function() {
                 return $window.localStorage;
             };
 
