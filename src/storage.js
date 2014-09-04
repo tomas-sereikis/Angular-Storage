@@ -89,6 +89,19 @@
          */
         clear:  function() {
             this.getCacheAdapter().clear();
+        },
+
+        /**
+         * returns list of keys stored in storage
+         * @returns {Array}
+         */
+        keys: function() {
+            var keys = [ ];
+            for (var i = 0; i < this.getCacheAdapter().length; i++) {
+                keys.push(this.getCacheAdapter().key(i));
+            }
+
+            return keys;
         }
     };
 

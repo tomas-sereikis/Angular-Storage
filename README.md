@@ -16,6 +16,7 @@ Methods:
 * `.has('index')` - checks if item exists in storage.
 * `.remove('index')` - removes item from storage.
 * `.clear()` - clears all items from storage.
+* `.keys()` - returns list of keys stored in storage.
 
 Example:
 
