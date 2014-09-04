@@ -15,10 +15,11 @@ Methods:
 * `.get('index')` - gets item from storage.
 * `.has('index')` - checks if item exists in storage.
 * `.remove('index')` - removes item from storage.
+* `.clear()` - clears all items from storage.
 
 Example:
 
-```
+```javascript
 function StorageController($localStorage) {
 	var count = $localStorage.has('count') 
 		? $localStorage.get('count')

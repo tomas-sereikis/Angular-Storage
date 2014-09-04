@@ -29,6 +29,10 @@
         },
 
         /**
+         * puts item to storage
+         * if save was unsuccessful then returns false
+         * if save was successful then returns true
+         *
          * @param index
          * @param value
          * @returns {boolean}
@@ -48,6 +52,7 @@
         },
 
         /**
+         * gets item from storage
          * @param index
          * @returns {*}
          */
@@ -63,6 +68,7 @@
         },
 
         /**
+         * checks if item exists in storage
          * @param index
          * @returns {boolean}
          */
@@ -71,16 +77,24 @@
         },
 
         /**
+         * removes item from storage
          * @param index
          */
         remove: function(index) {
             this.getCacheAdapter().removeItem(index);
+        },
+
+        /**
+         * clear all items from storage
+         */
+        clear:  function() {
+            this.getCacheAdapter().clear();
         }
     };
 
     angular
         .module('tseed.storage', [ ])
-        .factory("$sessionStorage", ['$window', factory(function ($window) {
+        .factory('$sessionStorage', ['$window', factory(function ($window) {
             /** @name $sessionStorage */
             var $sessionStorage = function() { };
             $sessionStorage.prototype = new CacheStorage();
@@ -95,7 +109,7 @@
 
             return new $sessionStorage();
         })])
-        .factory("$localStorage", ['$window', factory(function ($window) {
+        .factory('$localStorage', ['$window', factory(function ($window) {
             /** @name $localStorage */
             var $localStorage = function() { };
             $localStorage.prototype = new CacheStorage();
