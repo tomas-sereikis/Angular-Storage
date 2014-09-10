@@ -20,6 +20,7 @@
      */
     var StorageAbstract = function() { };
     StorageAbstract.prototype = {
+        
         /**
          * returns storage implementation
          * @return {Object}
@@ -87,7 +88,7 @@
         /**
          * clear all items from storage
          */
-        clear:  function() {
+        clear: function() {
             this.getImplementation().clear();
         },
 
